@@ -25,12 +25,12 @@ public class EstrategiaGreedy {
     /*
        Estrategia de Resolucion Algoritmo Greedy:
 
-        - Candidatos: Son todas las maquinas que se pueden seleccionar del conjunto proporcionado (maquinas ordenadas por producción descendente).
+        - Candidatos: Son todas las maquinas que se pueden seleccionar del conjunto proporcionado (ordenadas por producción descendente).
         - Estrategia de Seleccion de Candidatos: Seleccionar siempre la máquina más productiva disponible (toma la "mejor" opcion en cada paso).
         - Consideraciones:
           - Puede haber casos en los que el algoritmo no logre encontrar una solución válida. Esto ocurre si, en alguna iteración, no se encuentra ninguna mejor maquina que pueda producir piezas sin exceder el numero de piezas restantes (es decir, mejorMaquina permanece null).
             En este caso, el algoritmo retorna null, indicando que no pudo completar la producción con las maquinas y la estrategia de seleccion utilizada.
-          - Ventaja: Eficiencia Computacional Superior
+          - Ventaja: Eficiencia Computacional Superior en comparacion con Backtracking
                 En cada iteración, simplemente selecciona la "mejor" maquina localmente y la añade a la solución. No realiza "pruebas y errores" ni retrocede para considerar alternativas.
           - Desventaja:
                 Este algoritmo siempre encuentra una solución si existe una para su estrategia, sin embargo esta solución no garantiza ser la óptima global (la que minimiza las activaciones totales).

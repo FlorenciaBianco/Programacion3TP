@@ -41,10 +41,10 @@ public class Maquina implements Comparable<Maquina> {
     }
 
     /*
-       Orden: Cantidad de piezas por Ciclo de Mayor a Menor
+       Orden: Cantidad de Piezas por Ciclo de Mayor a Menor
     */
     @Override
     public int compareTo(Maquina otra) {
-        return Integer.compare(otra.piezasPorCiclo, this.piezasPorCiclo); // Orden Descendente
+        return Integer.compare(otra.piezasPorCiclo, this.piezasPorCiclo);
     }
 }

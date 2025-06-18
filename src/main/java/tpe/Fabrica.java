@@ -15,12 +15,9 @@ public class Fabrica {
         Fabrica fabrica = new Fabrica();
 
         try {
-            // Cargar configuración desde archivo
-            // Aca se puede cargar cualquier archivo .txt de los 4 que hay 
-            //Se debe cargar la ruta exacta del archivo .txt
-            fabrica.cargarConfig(args[0]);
+            fabrica.cargarConfiguracion(args[0]);
 
-            System.out.println("=== SISTEMA DE OPTIMIZACIÓN DE PRODUCCIÓN ===");
+            System.out.println("=== SISTEMA DE OPTIMIZACION PRODUCTIVA ===");
             System.out.println("Objetivo: " + fabrica.objetivoPiezas + " piezas");
             System.out.println("Máquinas disponibles: ");
             for (Maquina m : fabrica.maquinas) {
@@ -44,7 +41,7 @@ public class Fabrica {
         }
     }
 
-    private void cargarConfig(String pathArchivo) throws IOException {
+    private void cargarConfiguracion(String pathArchivo) throws IOException {
         maquinas = new ArrayList<>();
 
         try (BufferedReader reader = new BufferedReader(new FileReader(pathArchivo))) {

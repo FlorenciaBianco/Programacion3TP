@@ -4,15 +4,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 /*
- Clase Solucion: Representa una solución al problema de optimización de producción.
- Guarda la secuencia de máquinas utilizadas, las piezas producidas, el número de activaciones y el costo computacional de la solución.
+    Clase Solucion: Representa una solución al problema de Optimización de Producción.
+    Guarda la secuencia de máquinas utilizadas, las piezas producidas, el número de activaciones y el costo computacional de la solución.
  */
+
 public class Solucion {
-    private List<Maquina> secuencia;      // Máquinas usadas en orden
-    private int totalPiezas;              // Total de piezas producidas
-    private int totalActivaciones;        // Cantidad de máquinas totales activadas
-    private int costo;                    // Estados generados o candidatos evaluados
-    private boolean esOptima;             // Es o no una solución óptima
+    private List<Maquina> secuencia;      /* Máquinas usadas en orden  */
+    private int totalPiezas;              /* Total de piezas producidas */
+    private int totalActivaciones;        /* Cantidad de máquinas totales activadas */
+    private int costo;                    /* Costo computacional de la solucion */
+    private boolean esOptima;             /* Es o no una solucion optima */
 
     /* Constructor por defecto: Crea una solución vacía */
     public Solucion() {
@@ -24,9 +25,9 @@ public class Solucion {
     }
 
     /*
-    Constructor que recibe como parametros una secuencia inicial de maquinas y su costo:
-    Calcula total de piezas y activaciones automáticamente.
-     */
+       Constructor que recibe como parametros una secuencia inicial de maquinas y su costo:
+       Calcula total de piezas y activaciones automáticamente.
+    */
     public Solucion(List<Maquina> secuencia, int costo) {
         this.secuencia = new ArrayList<>(secuencia);
         this.totalActivaciones = secuencia.size();
@@ -58,7 +59,7 @@ public class Solucion {
         }
     }
 
-    /* Metodo que genera y devuelve una copia profunda de la solución actual */
+    /* Metodo que genera y devuelve una copia completa de la solución actual */
     public Solucion copia() {
         Solucion nueva = new Solucion();
         nueva.secuencia = new ArrayList<>(this.secuencia);
@@ -100,8 +101,8 @@ public class Solucion {
     }
 
     /*
-    Metodo toString() que devuelve una representación detallada de la solución encontrada, incluyendo la secuencia de máquinas, piezas totales,
-    activaciones de maquinas y el costo computacional.
+       Metodo toString() que devuelve una representación detallada de la solución encontrada, incluyendo la secuencia de máquinas, piezas totales,
+       activaciones de maquinas y el costo computacional.
      */
     @Override
     public String toString() {
