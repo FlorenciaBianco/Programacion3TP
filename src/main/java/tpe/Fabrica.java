@@ -11,11 +11,16 @@ public class Fabrica {
     private List<Maquina> maquinas;
     private int objetivoPiezas;
 
+    public Fabrica(List<Maquina> maquinas, int objetivoPiezas) {
+        this.maquinas = maquinas;
+        this.objetivoPiezas = objetivoPiezas;
+    }
+
     public static void main(String[] args) {
-        Fabrica fabrica = new Fabrica();
+        CargadorConfiguracion cargconfiguracion = new CargadorConfiguracion();
 
         try {
-            fabrica.cargarConfiguracion(args[0]);
+            Fabrica fabrica = cargconfiguracion.cargarConfiguracion(args[0]);
 
             System.out.println("=== SISTEMA DE OPTIMIZACION PRODUCTIVA ===");
             System.out.println("Objetivo: " + fabrica.objetivoPiezas + " piezas");
@@ -38,29 +43,6 @@ public class Fabrica {
 
         } catch (IOException e) {
             System.err.println("Error al cargar configuración: " + e);
-        }
-    }
-
-    private void cargarConfiguracion(String pathArchivo) throws IOException {
-        maquinas = new ArrayList<>();
-
-        try (BufferedReader reader = new BufferedReader(new FileReader(pathArchivo))) {
-
-
-            /* Primera línea: Objetivo de piezas a producir */
-            objetivoPiezas = Integer.parseInt(reader.readLine().trim());
-
-            /* Líneas siguientes: Máquinas disponibles, con sus respectivos numeros de piezas que producen */
-            String linea;
-            while ((linea = reader.readLine()) != null) {
-                linea = linea.trim();
-                if (!linea.isEmpty()) {
-                    String[] partes = linea.split(",");
-                    String nombre = partes[0].trim();
-                    int piezas = Integer.parseInt(partes[1].trim());
-                    maquinas.add(new Maquina(nombre, piezas));
-                }
-            }
         }
     }
 

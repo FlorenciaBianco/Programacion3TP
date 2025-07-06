@@ -1,5 +1,6 @@
 package tpe;
 
+import java.util.Collections;
 import java.util.List;
 
 /*
@@ -41,6 +42,7 @@ public class EstrategiaBacktracking {
         estadosGenerados = 0;
         mejorSolucion = null;
         Solucion solucionActual = new Solucion();
+        Collections.sort(maquinas);
 
         backtrackingRecursivo(solucionActual, 0);
 
@@ -71,6 +73,9 @@ public class EstrategiaBacktracking {
 
         /* Probar por cada maquina disponible */
         for (Maquina maquina : maquinas) {
+            if(piezasAcumuladas+maquina.getPiezasPorCiclo()>objetivoPiezas){
+                continue;
+            }
             solucionActual.agregarMaquina(maquina);
             backtrackingRecursivo(solucionActual, piezasAcumuladas + maquina.getPiezasPorCiclo()); /* Llamado Recursivo */
             solucionActual.removerUltimaMaquina();

@@ -59,9 +59,10 @@ public class EstrategiaGreedy {
             if (mejorMaquina == null) {
                 return null; /* No se puede completar con las maquinas disponibles */
             }
-
-            solucion.agregarMaquina(mejorMaquina);
-            piezasRestantes -= mejorMaquina.getPiezasPorCiclo();
+            while (piezasRestantes >= mejorMaquina.getPiezasPorCiclo()) {
+                solucion.agregarMaquina(mejorMaquina);
+                piezasRestantes -= mejorMaquina.getPiezasPorCiclo();
+            }
         }
 
         solucion.setCosto(candidatosEvaluados);
