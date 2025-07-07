@@ -42,7 +42,7 @@ public class EstrategiaBacktracking {
         estadosGenerados = 0;
         mejorSolucion = null;
         Solucion solucionActual = new Solucion();
-        Collections.sort(maquinas);
+        Collections.sort(maquinas); /* Ordenamiento de las Maquinas de Mayor a Menor para mayor Eficacia */
 
         backtrackingRecursivo(solucionActual, 0);
 
@@ -73,12 +73,26 @@ public class EstrategiaBacktracking {
 
         /* Probar por cada maquina disponible */
         for (Maquina maquina : maquinas) {
-            if(piezasAcumuladas+maquina.getPiezasPorCiclo()>objetivoPiezas){
+            if(continuarActivaciones(maquina,piezasAcumuladas,solucionActual)){ /* Metodo para Evualar las posibles activaciones de la maquina y su solucion obtenida */
                 continue;
             }
             solucionActual.agregarMaquina(maquina);
             backtrackingRecursivo(solucionActual, piezasAcumuladas + maquina.getPiezasPorCiclo()); /* Llamado Recursivo */
             solucionActual.removerUltimaMaquina();
+        }
+    }
+
+    private boolean continuarActivaciones(Maquina maquina, int piezasAcumuladas,Solucion solucionActual){
+        int maxPiezasMaquina = maquina.getPiezasPorCiclo();
+        int piezasFaltantes = objetivoPiezas-piezasAcumuladas;
+        int numActivacionesNecesarias = (int) Math.ceil((double) piezasFaltantes/maxPiezasMaquina);
+
+        /* Determinamos si con el mayor numero de activivaciones de la maquina se logra un resultado mayor que la solucion actual, efectuamos Poda */
+        if(mejorSolucion != null & solucionActual.getTotalActivaciones()+ numActivacionesNecesarias >= mejorSolucion.getTotalActivaciones()){
+            return true;
+        }
+        else{
+            return false;
         }
     }
 }
