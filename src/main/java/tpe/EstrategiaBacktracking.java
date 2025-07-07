@@ -73,7 +73,10 @@ public class EstrategiaBacktracking {
 
         /* Probar por cada maquina disponible */
         for (Maquina maquina : maquinas) {
-            if(continuarActivaciones(maquina,piezasAcumuladas,solucionActual)){ /* Metodo para Evualar las posibles activaciones de la maquina y su solucion obtenida */
+            /* Metodo continuarActivaciones() evalua la cantidad minima de activaciones
+            /* de la mejor maquina seleccionada al momento necesarias con la solucion parcialmente obtenida al momento */
+            /* Si es mayor directamente se descarta antes de seguir generandose, efectuando Poda de tipo Anticipativa, siguiendo a la siguiente maquina */
+            if(continuarActivaciones(maquina,piezasAcumuladas,solucionActual)){
                 continue;
             }
             solucionActual.agregarMaquina(maquina);
