@@ -73,9 +73,9 @@ public class EstrategiaBacktracking {
 
         /* Probar por cada maquina disponible */
         for (Maquina maquina : maquinas) {
-            /* Metodo continuarActivaciones() evalua la cantidad minima de activaciones
-            /* de la mejor maquina seleccionada al momento necesarias con la solucion parcialmente obtenida al momento */
-            /* Si es mayor directamente se descarta antes de seguir generandose, efectuando Poda de tipo Anticipativa, siguiendo a la siguiente maquina */
+            /* Metodo continuarActivaciones(): Evalua la cantidad minima de activaciones
+            /* de la mejor maquina seleccionada al momento necesarias con respecto a la solucion parcialmente obtenida hasta el momento */
+            /* Si es mayor directamente se descarta antes de seguir generandose, efectuando Poda de tipo Anticipativa, continuando a la siguiente maquina */
             if(continuarActivaciones(maquina,piezasAcumuladas,solucionActual)){
                 continue;
             }
@@ -90,7 +90,7 @@ public class EstrategiaBacktracking {
         int piezasFaltantes = objetivoPiezas-piezasAcumuladas;
         int numActivacionesNecesarias = (int) Math.ceil((double) piezasFaltantes/maxPiezasMaquina);
 
-        /* Determinamos si con el mayor numero de activivaciones de la maquina se logra un resultado mayor que la solucion actual, efectuamos Poda */
+        /* Determinamos si con el mayor numero de activaciones de la maquina se logra un resultado Mayor o Igual que la solucion actual, efectuamos Poda */
         if(mejorSolucion != null & solucionActual.getTotalActivaciones()+ numActivacionesNecesarias >= mejorSolucion.getTotalActivaciones()){
             return true;
         }
