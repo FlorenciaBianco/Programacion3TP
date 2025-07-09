@@ -90,12 +90,8 @@ public class EstrategiaBacktracking {
         int piezasFaltantes = objetivoPiezas-piezasAcumuladas;
         int numActivacionesNecesarias = (int) Math.ceil((double) piezasFaltantes/maxPiezasMaquina);
 
-        /* Determinamos si con el mayor numero de activaciones de la maquina se logra un resultado Mayor o Igual que la solucion actual, efectuamos Poda */
-        if(mejorSolucion != null && solucionActual.getTotalActivaciones()+ numActivacionesNecesarias >= mejorSolucion.getTotalActivaciones()){
-            return true;
-        }
-        else{
-            return false;
-        }
+        /* Determinamos si con el mayor numero de activaciones de la maquina se logra un resultado Mayor o Igual que la solucion actual, efectuamos poda */
+        return mejorSolucion != null && solucionActual.getTotalActivaciones()+ numActivacionesNecesarias >= mejorSolucion.getTotalActivaciones();
+
  }
 }
